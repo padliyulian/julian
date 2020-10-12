@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->string('password');
-            $table->enum('profile', ['board','expert','trainer','competitor']);
+            $table->enum('profile', ['admin','board','expert','trainer','competitor']);
             $table->text('skill')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
