@@ -46,9 +46,9 @@ class AuthRepository implements AuthInterface
             $user->api_token = null;
             $user->update();
             $user->authAcessToken()->delete();
-            return response(['message' => 'Logout success'], 200);
+            return response()->json(['message' => 'Logout success'], 200);
         } else {
-            return response(['message' => 'Unauthorized user'], 401);
+            return response()->json(['message' => 'Unauthorized user'], 401);
         }
     }
 }

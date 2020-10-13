@@ -25,5 +25,7 @@ Route::group(['namespace' => 'Api\v1', 'prefix' => 'v1'], function(){
 
 // private api
 Route::group(['middleware' => 'auth:api', 'namespace' => 'Api\v1', 'prefix' => 'v1'], function(){
-    // Route::get('/auth/logout', 'AuthController@logout');
+    Route::group(['middleware' => ['role:board']], function () {
+        Route::post('/user', 'UserController@register');
+    });
 });    

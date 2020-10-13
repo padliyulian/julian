@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AuthRequest;
 use App\Repositories\AuthInterface;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TokenRequest;
 
 class AuthController extends Controller
 {
@@ -21,7 +22,7 @@ class AuthController extends Controller
         return $this->authInterface->login($request);
     }
 
-    public function logout(Request $request)
+    public function logout(TokenRequest $request)
     {
         return $this->authInterface->logout($request);
     }
