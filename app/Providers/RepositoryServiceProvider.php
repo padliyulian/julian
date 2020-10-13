@@ -5,8 +5,12 @@ namespace App\Providers;
 use App\Repositories\AuthInterface;
 use App\Repositories\UserInterface;
 use App\Repositories\AuthRepository;
+use App\Repositories\SkillInterface;
 use App\Repositories\UserRepository;
+use App\Repositories\SkillRepository;
+use App\Repositories\ActivityInterface;
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\ActivityRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -25,6 +29,16 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             UserInterface::class,
             UserRepository::class
+        );
+
+        $this->app->bind(
+            SkillInterface::class,
+            SkillRepository::class
+        );
+
+        $this->app->bind(
+            ActivityInterface::class,
+            ActivityRepository::class
         );
     }
 
