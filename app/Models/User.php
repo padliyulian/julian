@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Skill');
     }
+
+    public function activity()
+    {
+        return $this->belongsTo('App\Models\Activity', 'skill_id');
+    }
 }

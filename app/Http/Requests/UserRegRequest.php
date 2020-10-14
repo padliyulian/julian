@@ -29,7 +29,7 @@ class UserRegRequest extends FormRequest
             'username' => 'required|string|min:8|max:100|unique:users',
             'password' => 'required|string|min:8|max:100|confirmed',
             'profile' => 'required|string|max:100',
-            'skill_id' => 'nullable|string',
+            'skill_id' => 'nullable',
         ];
     }
 }

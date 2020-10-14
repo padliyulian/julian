@@ -24,7 +24,7 @@ class ActivityRequest extends FormRequest
     public function rules()
     {
         return [
-            'skill_id' => 'required|string|max:250',
+            'skill_id' => 'required',
             'title' => 'required|string|max:250',
             'description' => 'required|string|max:600',
             'startdate' => 'required|date',

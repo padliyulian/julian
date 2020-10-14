@@ -18,6 +18,6 @@ class Activity extends Model
 
     public function participants()
     {
-        return $this->hasMany('App\Models\User', 'skill_id')->with('skill:id,name');
+        return $this->hasMany('App\Models\User', 'skill_id', 'skill_id')->with('skill:id,name');
     }
 }

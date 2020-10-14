@@ -59,20 +59,17 @@
                                                         <td>{{item.description}}</td>
                                                         <td>{{$moment(item.startdate).format('D/MM/YYYY')}}</td>
                                                         <td>{{$moment(item.enddate).format('D/MM/YYYY')}}</td>
-                                                        <td>
-                                                            <div v-for="(el,i) in item.participants" :key="el.id">
-                                                                <div>{{el.name}}</div>
-                                                                <div>{{el.profile}}</div>
-                                                                <div>{{el.skill.name}},</div>
-                                                                <hr v-if="i != item.participants.length-1">
-                                                            </div>
+                                                        <td class="c-overflow">
+                                                            <div class="c-height">
+                                                                <div v-for="(el,i) in item.participants" :key="el.id">
+                                                                    <div>{{el.name}}</div>
+                                                                    <div>{{el.profile}}</div>
+                                                                    <div>{{el.skill.name}},</div>
+                                                                    <hr v-if="i != item.participants.length-1">
+                                                                </div>
+                                                            </div>    
                                                         </td>
                                                         <td>
-                                                            <a @click.prevent="showDetailModal(item)" href="#" title="Tampil" data-target="#modal_detail" data-toggle="modal">
-                                                                <span class="text-success">
-                                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                </span>
-                                                            </a>
                                                             <a @click.prevent="showEditModal(item)" href="#" title="Ubah" data-target="#modal_edit" data-toggle="modal">
                                                                 <span class="text-warning">
                                                                     <i class="fa fa-edit" aria-hidden="true"></i>
@@ -134,21 +131,19 @@
 
             <add-modal v-if="addMode" :getData="getData" :hideAddModal="hideAddModal"/>
             <edit-modal v-if="editMode" :row="selectedRow" :getData="getData" :hideEditModal="hideEditModal"/>
-            <detail-modal v-if="detailMode" :row="selectedRow" :hideDetailModal="hideDetailModal"/>
         </div>
     </div>
 </template>
 
 
 <script>
-    import { AddModal, EditModal, DetailModal } from '../components'
+    import { AddModal, EditModal } from '../components'
     export default {
         name: 'Activity',
 
         components: {
             AddModal,
-            EditModal,
-            DetailModal
+            EditModal
         },
 
         data() {
@@ -182,12 +177,12 @@
 
             deleteRow(id) {
                 swalWithBootstrapButtons.fire({
-                    title: 'Yakin hapus data?',
-                    text: "Data yang sudah dihapus tidak dapat dikembalikan!",
+                    title: 'Sure delete it?',
+                    text: "You can't revert it!",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonText: 'Ya!',
-                    cancelButtonText: 'Tidak!',
+                    confirmButtonText: 'Yes!',
+                    cancelButtonText: 'No!',
                     reverseButtons: true
                 }).then((result) => {
                     if (result.value) {
@@ -198,16 +193,16 @@
                             .catch(err => console.log(err))
 
                         swalWithBootstrapButtons.fire(
-                            'Terhapus!',
-                            'Data berhasil dihapus.',
+                            'Deleted!',
+                            'Data has deleted.',
                             'success'
                         )
                     } else if (
                         result.dismiss === Swal.DismissReason.cancel
                     ) {
                         swalWithBootstrapButtons.fire(
-                            'Batal',
-                            'Data tidak jadi dihapus',
+                            'Reset',
+                            'Cancel deleted',
                             'error'
                         )
                     }
@@ -278,3 +273,14 @@
         }
     }
 </script>
+
+
+<style lang="scss" scoped>
+    .c-overflow {
+        overflow: auto;
+    }
+
+    .c-height {
+        max-height: 100px;
+    }
+</style>
