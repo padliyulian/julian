@@ -20,7 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->enum('profile', ['admin','board','expert','trainer','competitor']);
-            $table->string('skill')->nullable();
+            $table->unsignedBigInteger('skill_id')->nullable();
+            $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->text('api_token')->nullable();

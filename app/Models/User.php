@@ -43,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(OauthAccessToken::class);
     }
+
+    public function skill()
+    {
+        return $this->belongsTo('App\Models\Skill');
+    }
 }

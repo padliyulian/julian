@@ -18,6 +18,13 @@ class UserController extends Controller
 
     public function register(UserRegRequest $request)
     {
-        return $this->userInterface->register($request);
+        try {
+            $data = $this->userInterface->register($request);
+            if ($data) {
+                return response()->json(['message' => 'Create success'], 200);
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 }

@@ -98,11 +98,11 @@ class CreatePermissionTables extends Migration
 
         // adding users
         DB::table('users')->insert([
-            ['name' => 'admin', 'email' => 'admin@mail.com', 'username' => 'admin', 'password' => Hash::make('admin'), 'profile' => 'admin', 'email_verified_at' => NOW(), 'created_at' => NOW()],
-            ['name' => 'board', 'email' => 'board@mail.com', 'username' => 'board', 'password' => Hash::make('board'), 'profile' => 'board', 'email_verified_at' => NOW(), 'created_at' => NOW()],
-            ['name' => 'expert', 'email' => 'expert@mail.com', 'username' => 'expert', 'password' => Hash::make('expert'), 'profile' => 'expert', 'email_verified_at' => NOW(), 'created_at' => NOW()],
-            ['name' => 'trainer', 'email' => 'trainer@mail.com', 'username' => 'trainer', 'password' => Hash::make('trainer'), 'profile' => 'trainer', 'email_verified_at' => NOW(), 'created_at' => NOW()],
-            ['name' => 'competitor', 'email' => 'competitor@mail.com', 'username' => 'competitor', 'password' => Hash::make('competitor'), 'profile' => 'competitor', 'email_verified_at' => NOW(), 'created_at' => NOW()],
+            ['name' => 'admin', 'email' => 'admin@mail.com', 'username' => 'admin', 'password' => Hash::make('admin'), 'profile' => 'admin', 'skill_id' => 1, 'email_verified_at' => NOW(), 'created_at' => NOW()],
+            ['name' => 'board', 'email' => 'board@mail.com', 'username' => 'board', 'password' => Hash::make('board'), 'profile' => 'board', 'skill_id' => 2, 'email_verified_at' => NOW(), 'created_at' => NOW()],
+            ['name' => 'expert', 'email' => 'expert@mail.com', 'username' => 'expert', 'password' => Hash::make('expert'), 'profile' => 'expert', 'skill_id' => 3, 'email_verified_at' => NOW(), 'created_at' => NOW()],
+            ['name' => 'trainer', 'email' => 'trainer@mail.com', 'username' => 'trainer', 'password' => Hash::make('trainer'), 'profile' => 'trainer', 'skill_id' => 4, 'email_verified_at' => NOW(), 'created_at' => NOW()],
+            ['name' => 'competitor', 'email' => 'competitor@mail.com', 'username' => 'competitor', 'password' => Hash::make('competitor'), 'profile' => 'competitor', 'skill_id' => 5, 'email_verified_at' => NOW(), 'created_at' => NOW()],
         ]);
 
         // assign a role to user

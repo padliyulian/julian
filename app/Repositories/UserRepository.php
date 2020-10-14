@@ -24,14 +24,14 @@ class UserRepository implements UserInterface
         $user->username = $request->username;
         $user->password = Hash::make($request->password);
         $user->profile = $request->profile;
-        if ($request->has('skill')) {
-            $user->skill = $request->skill;
+        if ($request->has('skill_id')) {
+            $user->skill_id = $request->skill_id;
         }
         
         if ($user->save()) {
             $role = DB::table('roles')->where('name', $user->profile)->first();
             $user->assignRole($role->id);
-            return response()->json(['message' => 'Create success'], 200);
+            return $user;
         }
     }
 }

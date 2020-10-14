@@ -16,8 +16,8 @@ class Activity extends Model
         return $this->belongsTo('App\Models\Skill');
     }
 
-    public function participans()
+    public function participants()
     {
-        return $this->hasMany('App\Models\User');
+        return $this->hasMany('App\Models\User', 'skill_id')->with('skill:id,name');
     }
 }

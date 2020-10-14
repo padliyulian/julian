@@ -53,6 +53,6 @@ class ActivityRepository implements ActivityInterface
 
     public function detail($skill_id)
     {
-        return $this->activity->select('id','skill_id','title','description','startdate','enddate')->where('skill_id', $skill_id)->orderBy('startdate', 'ASC')->with('skill:id,name')->get();
+        return $this->activity->select('id','skill_id','title','description','startdate','enddate')->where('skill_id', $skill_id)->orderBy('startdate', 'ASC')->with('skill:id,name','participants:id,name,profile,skill_id')->get();
     }
 }
