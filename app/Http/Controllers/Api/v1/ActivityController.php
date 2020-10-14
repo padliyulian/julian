@@ -71,4 +71,14 @@ class ActivityController extends Controller
             return $e->getMessage();
         }
     }
+
+    public function list(Request $request)
+    {
+        try {
+            $data = $this->activityInterface->list($request);
+            return response()->json($data, 200);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }

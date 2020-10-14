@@ -27,10 +27,11 @@ Route::group(['namespace' => 'Api\v1', 'prefix' => 'v1'], function(){
 Route::group(['middleware' => 'auth:api', 'namespace' => 'Api\v1', 'prefix' => 'v1'], function(){
     Route::get('/skills', 'SkillController@list');
     Route::get('/activities/{skill_id}', 'ActivityController@detail');
-    Route::group(['middleware' => ['role:board']], function () {
+    Route::group(['middleware' => ['role:admin|board']], function () {
         Route::post('/user', 'UserController@register');
     });
-    Route::group(['middleware' => ['role:expert']], function () {
+    Route::group(['middleware' => ['role:admin|expert']], function () {
+        Route::get('/activity', 'ActivityController@list');
         Route::post('/activity', 'ActivityController@add');
         Route::patch('/activity/{activity_id}', 'ActivityController@update');
         Route::delete('/activity/{activity_id}', 'ActivityController@delete');

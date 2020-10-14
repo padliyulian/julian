@@ -55,4 +55,24 @@ class ActivityRepository implements ActivityInterface
     {
         return $this->activity->select('id','skill_id','title','description','startdate','enddate')->where('skill_id', $skill_id)->orderBy('startdate', 'ASC')->with('skill:id,name','participants:id,name,profile,skill_id')->get();
     }
+
+    public function list($request)
+    {
+        $length = $request->input('length');
+        $column = $request->input('column');
+        $dir = $request->input('dir');
+        $search = $request->input('search');
+
+        $query = $this->activity->select('id','skill_id','title','description','startdate','enddate')->with('skill:id,name','participants:id,name,profile,skill_id')->orderBy($column, $dir);
+
+        if ($search) {
+            $query->where(function($query) use ($search) {
+                $query->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%');
+            });
+        }
+
+        $data = $query->paginate($length);
+        return $data;
+    }
 }
