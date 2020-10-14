@@ -28,3 +28,6 @@
 - username competitor@mail.com
   password competitor
   role : competitor
+
+# api collection
+- on dir resources/js/julian.postman_collection.json
